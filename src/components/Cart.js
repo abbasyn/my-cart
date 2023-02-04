@@ -5,7 +5,12 @@ import Card from "./UI/Card";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  console.log({ items: cartCtx.items });
+
+  const numbersOfItemsInCart = cartCtx.items.reduce((curNum, item) => {
+    return curNum + item.amount;
+  }, 0);
+
+  console.log(numbersOfItemsInCart);
 
   return (
     <Card>
@@ -24,7 +29,7 @@ const Cart = (props) => {
             </div>
 
             <span>$ {item.price}</span>
-            <span>Quantity {item.amount}</span>
+            <span>Quantity {numbersOfItemsInCart}</span>
 
             <div className="flex items-center justify-center gap-3 p-4 text-lg font-bold">
               <button className="px-3 bg-red-800 rounded :">-</button>
