@@ -21,8 +21,6 @@ const cartReducer = (state, action) => {
 
   if (action.type === "REMOVE") {
     const removeItem = id;
-    const updateAmount =
-      state.totalAmount + action.item.price * action.item.amount;
   }
 
   return defaultCartState;
@@ -53,3 +51,10 @@ const CartProvider = (props) => {
 };
 
 export default CartProvider;
+
+// items:[{},{},{}]
+
+// 1
+// items[1]
+// item:{}
+// {...item, amount:item.amount +1}
