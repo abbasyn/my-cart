@@ -20,7 +20,7 @@ const cartReducer = (state, action) => {
   }
 
   if (action.type === "REMOVE") {
-    const removeItem = id;
+    // const removeItem = id;
   }
 
   return defaultCartState;
