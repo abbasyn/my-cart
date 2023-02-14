@@ -1,12 +1,24 @@
 import React, { useContext } from "react";
-import Card from "./UI/Card";
-import CartContext from "./context/store/cart-context";
 
-const CardItem = (props) => {
-  const ctx = useContext(CartContext);
+import FruitItemForm from "./FruitItemForm";
 
-  const addToCart = () => {
-    ctx.addItem({ ...props });
+import Card from "../UI/Card";
+import CartContext from "../context/store/cart-context";
+
+const FruitItem = (props) => {
+  const price = `${props.price.toFixed(2)}`;
+
+  const cartCtx = useContext(CartContext);
+
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: props.id,
+      title: props.title,
+      amount: amount,
+      price: props.price,
+    });
+
+    //cartCtx.addItem({ ...props });
   };
   return (
     <div className=" max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -26,19 +38,14 @@ const CardItem = (props) => {
           </h5>
         </span>
 
-        <span className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-[]">
-          ${props.price}
+        <span className="mb-3 font-bold text-[#ee923f] dark:text-gray-400 text-[]">
+          $ {price}
         </span>
-        <button
-          onClick={addToCart}
-          href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Add to Cart
-        </button>
+
+        <FruitItemForm onAddToCart={addToCartHandler} />
       </div>
     </div>
   );
 };
 
-export default CardItem;
+export default FruitItem;

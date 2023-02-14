@@ -2,8 +2,8 @@ import React from "react";
 
 import Card from "./UI/Card";
 import Cart from "./cart/Cart";
-import CardItem from "./ProductItem";
-import { FRUITS } from "../products";
+import FruitItem from "./product/FruitItem";
+import { FRUITS } from "./product/Products";
 // const AvailableFruits = () => {
 //   const fruitsList = fruits.map((fruit) => (
 
@@ -15,8 +15,9 @@ const Main = () => {
       <h2 className="text-center p-6 text-6xl font-bold">All Items</h2>
       <Card className="mx-auto flex justify-between">
         {FRUITS.map((fruit) => (
-          <CardItem
+          <FruitItem
             key={fruit.id}
+            id={fruit.id}
             title={fruit.title}
             desc={fruit.description}
             price={fruit.price}
@@ -25,8 +26,6 @@ const Main = () => {
           />
         ))}
       </Card>
-
-      <Cart />
     </>
   );
 };
